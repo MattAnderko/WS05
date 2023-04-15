@@ -2,7 +2,7 @@
 using System;
 using System.Threading.Tasks;
 
-namespace MovieDbApp.Endpoint.Services
+namespace MessengerPlatform.Endpoint.Services
 {
     public class SignalRHub : Hub
     {

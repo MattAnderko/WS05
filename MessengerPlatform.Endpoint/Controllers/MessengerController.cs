@@ -1,8 +1,8 @@
-﻿using MessengerPlatform.Logic.Classes;
+﻿using MessengerPlatform.Endpoint.Services;
+using MessengerPlatform.Logic.Classes;
 using MessengerPlatform.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
-using MovieDbApp.Endpoint.Services;
 using System.Collections.Generic;
 
 
@@ -12,10 +12,10 @@ namespace MessengerPlatform.Endpoint.Controllers
     [ApiController]
     public class MessengerController : ControllerBase
     {
-        MessengerLogic logic;
+        IMessengerLogic logic;
         IHubContext<SignalRHub> hub;
 
-        public MessengerController(MessengerLogic logic, IHubContext<SignalRHub> hub)
+        public MessengerController(IMessengerLogic logic, IHubContext<SignalRHub> hub)
         {
             this.logic = logic;
             this.hub = hub;
