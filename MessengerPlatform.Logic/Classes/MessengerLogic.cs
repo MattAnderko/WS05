@@ -15,8 +15,12 @@ namespace MessengerPlatform.Logic.Classes
         private static readonly JsonSerializerSettings _options = new() { NullValueHandling = NullValueHandling.Ignore };
         public MessengerLogic(List<Message> repo)
         {
-            var pizzas = JsonConvert.DeserializeObject<Message[]>(File.ReadAllText("messages.json"));
-            pizzas.ToList().ForEach(x => repo.Add(x));
+            repo = new List<Message>();
+            if (File.Exists("pizza.json"))
+            {
+                var tmp = JsonConvert.DeserializeObject<Message[]>(File.ReadAllText("pizza.json"));
+                tmp.ToList().ForEach(x => repo.Add(x));
+            }
         }
 
         public void Create(Message item)
@@ -32,13 +36,6 @@ namespace MessengerPlatform.Logic.Classes
         public IQueryable<Message> ReadAll()
         {
             return this.repo.AsQueryable();
-        }
-        ~MessengerLogic()
-        {
-            List<Message> pizzas = new List<Message>();
-            foreach (var item in repo) pizzas.Add(item);
-            string jsonData = JsonConvert.SerializeObject(pizzas);
-            File.WriteAllText("messages.json", jsonData);
         }
     }
 }
