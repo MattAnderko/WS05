@@ -1,44 +1,44 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MessengerPlatform.Endpoint.Services;
+using MessengerPlatform.Logic.Classes;
+using MessengerPlatform.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using System.Collections.Generic;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace MessengerPlatform.Endpoint.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class MessengerController : ControllerBase
     {
-        // GET: api/<MessengerController>
+        IMessengerLogic logic;
+        IHubContext<SignalRHub> hub;
+
+        public MessengerController(IMessengerLogic logic, IHubContext<SignalRHub> hub)
+        {
+            this.logic = logic;
+            this.hub = hub;
+        }
+
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<Message> ReadAll()
         {
-            return new string[] { "value1", "value2" };
+            return this.logic.ReadAll();
         }
 
-        // GET api/<MessengerController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public Message Read(int id)
         {
-            return "value";
+            return this.logic.Read(id);
         }
 
-        // POST api/<MessengerController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Create([FromBody] Message value)
         {
-        }
-
-        // PUT api/<MessengerController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<MessengerController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            this.logic.Create(value);
+            this.hub.Clients.All.SendAsync("MessageCreated", value);
         }
     }
+
 }

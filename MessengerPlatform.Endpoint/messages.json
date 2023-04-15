@@ -1,0 +1,77 @@
+[
+  {
+    "sender": "Alice",
+    "messageContent": "Hi Bob, how are you?",
+    "sendingDate": "2023-04-14T10:30:00Z"
+  },
+  {
+    "sender": "Bob",
+    "messageContent": "I'm good, thanks. How about you?",
+    "sendingDate": "2023-04-14T10:35:00Z"
+  },
+  {
+    "sender": "Charlie",
+    "messageContent": "Hey guys, what's up?",
+    "sendingDate": "2023-04-14T11:00:00Z"
+  },
+  {
+    "sender": "Bob",
+    "messageContent": "Not much, just working. How about you?",
+    "sendingDate": "2023-04-14T11:05:00Z"
+  },
+  {
+    "sender": "Alice",
+    "messageContent": "Same here. By the way, have you seen the latest movie?",
+    "sendingDate": "2023-04-14T11:30:00Z"
+  },
+  {
+    "sender": "Charlie",
+    "messageContent": "No, I haven't. What's it about?",
+    "sendingDate": "2023-04-14T11:35:00Z"
+  },
+  {
+    "sender": "Bob",
+    "messageContent": "It's a sci-fi thriller. I heard it's really good.",
+    "sendingDate": "2023-04-14T12:00:00Z"
+  },
+  {
+    "sender": "Alice",
+    "messageContent": "We should definitely watch it together!",
+    "sendingDate": "2023-04-14T12:05:00Z"
+  },
+  {
+    "sender": "Charlie",
+    "messageContent": "Sounds like a plan! When do you guys want to go?",
+    "sendingDate": "2023-04-14T12:30:00Z"
+  },
+  {
+    "sender": "Bob",
+    "messageContent": "How about next Saturday afternoon?",
+    "sendingDate": "2023-04-14T12:35:00Z"
+  },
+  {
+    "sender": "Alice",
+    "messageContent": "Works for me!",
+    "sendingDate": "2023-04-14T13:00:00Z"
+  },
+  {
+    "sender": "Charlie",
+    "messageContent": "Me too. Let's meet at the theater at 3 PM?",
+    "sendingDate": "2023-04-14T13:05:00Z"
+  },
+  {
+    "sender": "Bob",
+    "messageContent": "Sounds good. See you guys there!",
+    "sendingDate": "2023-04-14T13:30:00Z"
+  },
+  {
+    "sender": "Alice",
+    "messageContent": "Can't wait!",
+    "sendingDate": "2023-04-14T13:35:00Z"
+  },
+  {
+    "sender": "Charlie",
+    "messageContent": "Me neither!",
+    "sendingDate": "2023-04-14T14:00:00Z"
+  }
+]
