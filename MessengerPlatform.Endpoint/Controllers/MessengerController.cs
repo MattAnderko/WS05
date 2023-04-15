@@ -1,6 +1,8 @@
 ﻿using MessengerPlatform.Logic.Classes;
+using MessengerPlatform.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
+using MovieDbApp.Endpoint.Services;
 using System.Collections.Generic;
 
 
@@ -10,21 +12,32 @@ namespace MessengerPlatform.Endpoint.Controllers
     [ApiController]
     public class MessengerController : ControllerBase
     {
-        MessengerLogic mLogic;
+        MessengerLogic logic;
         IHubContext<SignalRHub> hub;
+
+        public MessengerController(MessengerLogic logic, IHubContext<SignalRHub> hub)
+        {
+            this.logic = logic;
+            this.hub = hub;
+        }
+
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<Message> ReadAll()
         {
-            return new string[] { "value1", "value2" };
+            return this.logic.ReadAll();
         }
+
         [HttpGet("{id}")]
-        public string Get(int id)
+        public Message Read(int id)
         {
-            return "value";
+            return this.logic.Read(id);
         }
+
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Create([FromBody] Message value)
         {
+            this.logic.Create(value);
+            this.hub.Clients.All.SendAsync("MessageCreated", value);
         }
     }
 
