@@ -17,7 +17,15 @@
         <ListBox ItemsSource="{Binding Messages}" SelectedItem="{Binding SelectedMessage}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Label Content="{Binding Sender}" />
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Content="{Binding Sender}"/>
+                        <Label Content="{Binding SendingDate}" Grid.Column="1"/>
+                    </Grid>
+                    
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
