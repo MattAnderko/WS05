@@ -22,7 +22,36 @@ namespace MessengerPlatform.Client
             set { SetProperty(ref errorMessage, value); }
         }
 
+        private string user;
 
+        public string User
+        {
+            get { return user; }
+            set
+            {
+                if (value != null)
+                {
+                    user = value;
+
+                }
+                OnPropertyChanged();
+            }
+        }
+        private string newMessage;
+
+        public string NewMessage
+        {
+            get { return newMessage; }
+            set
+            {
+                if (value != null)
+                {
+                    newMessage = value;
+
+                }
+                OnPropertyChanged();
+            }
+        }
         public RestCollection<Message> Messages { get; set; }
 
         private Message selectedMessage;
@@ -32,15 +61,12 @@ namespace MessengerPlatform.Client
             get { return selectedMessage; }
             set
             {
-                if (value != null) { }
-                //{
-                //    selectedMessage = new Message()
-                //    {
-                //        MessageName = value.MessageName,
-                //        MessageId = value.MessageId
-                //    };
-                //    OnPropertyChanged();
-                //}
+                    if (value != null)
+                    {
+                        selectedMessage = new Message(value.Sender, value.MessageContent, value.SendingDate);
+               
+                    }
+                    OnPropertyChanged();
             }
         }
         public ICommand CreateMessageCommand { get; set; }
@@ -61,7 +87,7 @@ namespace MessengerPlatform.Client
                 ;
                 CreateMessageCommand = new RelayCommand(() =>
                 {
-                    Messages.Add(new Message(SelectedMessage.Sender, SelectedMessage.MessageContent, SelectedMessage.SendingDate));
+                    Messages.Add(new Message(user, newMessage,System.DateTime.Now));
                 });
             }
         }
