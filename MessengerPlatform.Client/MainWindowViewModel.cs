@@ -32,16 +32,15 @@ namespace MessengerPlatform.Client
             get { return selectedMessage; }
             set
             {
-                if (value != null)
-                {
-                    //selectedMessage = new Message()
-                    //{
-                    //    MessageName = value.MessageName,
-                    //    MessageId = value.MessageId
-                    //};
-                    //OnPropertyChanged();
-                    //(DeleteMessageCommand as RelayCommand).NotifyCanExecuteChanged();
-                }
+                if (value != null) { }
+                //{
+                //    selectedMessage = new Message()
+                //    {
+                //        MessageName = value.MessageName,
+                //        MessageId = value.MessageId
+                //    };
+                //    OnPropertyChanged();
+                //}
             }
         }
         public ICommand CreateMessageCommand { get; set; }
@@ -58,7 +57,8 @@ namespace MessengerPlatform.Client
         {
             if (!IsInDesignMode)
             {
-                Messages = new RestCollection<Message>("http://localhost:53910/", "Message", "hub");
+                Messages = new RestCollection<Message>("http://localhost:19932/", "message", "hub");
+                ;
                 CreateMessageCommand = new RelayCommand(() =>
                 {
                     Messages.Add(new Message(SelectedMessage.Sender, SelectedMessage.MessageContent, SelectedMessage.SendingDate));

@@ -51,6 +51,7 @@ namespace MessengerPlatform.Client
             try
             {
                 client.GetAsync("").GetAwaiter().GetResult();
+                ;
             }
             catch (HttpRequestException)
             {

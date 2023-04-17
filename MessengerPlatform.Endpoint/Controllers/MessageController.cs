@@ -10,12 +10,12 @@ namespace MessengerPlatform.Endpoint.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class MessengerController : ControllerBase
+    public class MessageController : ControllerBase
     {
         IMessengerLogic logic;
         IHubContext<SignalRHub> hub;
 
-        public MessengerController(IMessengerLogic logic, IHubContext<SignalRHub> hub)
+        public MessageController(IMessengerLogic logic, IHubContext<SignalRHub> hub)
         {
             this.logic = logic;
             this.hub = hub;
